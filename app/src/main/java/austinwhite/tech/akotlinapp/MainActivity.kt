@@ -7,6 +7,7 @@ import android.widget.RadioButton
 import android.widget.EditText
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import kotlinx.android.synthetic.main.activity_main.*
 import java.math.RoundingMode
 import java.text.DecimalFormat
 
@@ -26,8 +27,8 @@ class MainActivity : AppCompatActivity() {
         val fifteenpercent: RadioButton = findViewById(R.id.fifteenpercent)//15%
         val twentypercent: RadioButton = findViewById(R.id.twentypercent)//20%
 
-        val df = DecimalFormat("###0.00")
-        df.roundingMode = RoundingMode.FLOOR
+        //val df = DecimalFormat("###0.00")
+        //df.roundingMode = RoundingMode.FLOOR
 
         calculate.setOnClickListener {
             when {
@@ -38,13 +39,8 @@ class MainActivity : AppCompatActivity() {
                         result.text = getString(R.string.error)
                         totalprice.text = " "
                     } else {
-                        val input = userinput.text.toString().toDouble()
-                        val tip = input * 0.10
-
-                        val total = tip + input
-
-                        result.text = getString(R.string.youtip) + df.format(tip)
-                        totalprice.text = getString(R.string.yourprice) + df.format(total)
+                        val percentage = 0.10
+                        calculatetotal(percentage)
                     }
                 }
                 fifteenpercent.isChecked -> {
@@ -54,13 +50,8 @@ class MainActivity : AppCompatActivity() {
                         result.text = getString(R.string.error)
                         totalprice.text = " "
                     } else {
-                        val input = userinput.text.toString().toDouble()
-                        val tip = input * 0.15
-
-                        val total = tip + input
-
-                        result.text = getString(R.string.youtip) + df.format(tip)
-                        totalprice.text = getString(R.string.yourprice) + df.format(total)
+                        val percentage = 0.15
+                        calculatetotal(percentage)
                     }
                 }
                 twentypercent.isChecked -> {
@@ -70,13 +61,9 @@ class MainActivity : AppCompatActivity() {
                         result.text = getString(R.string.error)
                         totalprice.text = " "
                     } else {
-                        val input = userinput.text.toString().toDouble()
-                        val tip = input * 0.20
+                        val percentage = 0.20
+                        calculatetotal(percentage)
 
-                        val total = tip + input
-
-                        result.text = getString(R.string.youtip) + df.format(tip)
-                        totalprice.text = getString(R.string.yourprice) + df.format(total)
                     }
                 }
                 custompercent.isChecked -> {
@@ -96,15 +83,12 @@ class MainActivity : AppCompatActivity() {
                         totalprice.text = " "
 
                     } else {
-                        val input = userinput.text.toString().toDouble() //value to get tip from
                         val usercustom = custominput.text.toString().toDouble() //custom percentage
                         val userpercent = usercustom * 0.01
-                        val tip = input * userpercent
+                        val percentage = userpercent
 
-                        val total = tip + input
+                        calculatetotal(percentage)
 
-                        result.text = getString(R.string.youtip) + df.format(tip)
-                        totalprice.text = getString(R.string.yourprice) + df.format(total)
                     }
                 }
                 else -> {
@@ -113,5 +97,20 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         }
+    }
+
+    @SuppressLint("SetTextI18n")
+    private fun calculatetotal(percentage: Double) {
+        val input = userinput.text.toString().toDouble()
+        val tip = input * percentage
+
+        val df = DecimalFormat("###0.00")
+        df.roundingMode = RoundingMode.FLOOR
+
+        val total = tip + input
+
+        result.text = getString(R.string.youtip) + df.format(tip)
+        totalprice.text = getString(R.string.yourprice) + df.format(total)
+
     }
 }
