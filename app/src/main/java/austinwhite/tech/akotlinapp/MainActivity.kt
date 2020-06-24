@@ -33,33 +33,31 @@ class MainActivity : AppCompatActivity() {
                     val checkPriceInput = userinput.text.toString() //checking value to get tip from
 
                     if (checkPriceInput.isBlank()) {
-                        result.text = getString(R.string.error)
-                        totalprice.text = " "
+                        blankerror(result, totalprice)
+
                     } else {
                         val percentage = 0.10
-                        calculatetotal(percentage)
+                        calculatetotal(percentage, result, totalprice)
                     }
                 }
                 fifteenpercent.isChecked -> {
                     val checkPriceInput = userinput.text.toString() //checking value to get tip from
 
                     if (checkPriceInput.isBlank()) {
-                        result.text = getString(R.string.error)
-                        totalprice.text = " "
+                        blankerror(result, totalprice)
                     } else {
                         val percentage = 0.15
-                        calculatetotal(percentage)
+                        calculatetotal(percentage, result, totalprice)
                     }
                 }
                 twentypercent.isChecked -> {
                     val checkPriceInput = userinput.text.toString() //checking value to get tip from
 
                     if (checkPriceInput.isBlank()) {
-                        result.text = getString(R.string.error)
-                        totalprice.text = " "
+                        blankerror(result, totalprice)
                     } else {
                         val percentage = 0.20
-                        calculatetotal(percentage)
+                        calculatetotal(percentage, result, totalprice)
 
                     }
                 }
@@ -68,35 +66,36 @@ class MainActivity : AppCompatActivity() {
                     val checkCustomPercentInput = custominput.text.toString() //checking custom percentage
 
                     if (checkPriceInput.isBlank()) {
-                        result.text = getString(R.string.error)
-                        totalprice.text = " "
+                        blankerror(result, totalprice)
 
                     } else if (checkCustomPercentInput.isBlank()){
-                        result.text = getString(R.string.error)
-                        totalprice.text = " "
+                        blankerror(result, totalprice)
 
                     } else if (checkPriceInput.isBlank() && checkCustomPercentInput.isBlank()){
-                        result.text = getString(R.string.error)
-                        totalprice.text = " "
+                        blankerror(result, totalprice)
 
                     } else {
                         val usercustom = custominput.text.toString().toDouble() //custom percentage
                         val percentage = usercustom * 0.01
 
-                        calculatetotal(percentage)
+                        calculatetotal(percentage, result, totalprice)
 
                     }
                 }
                 else -> {
-                    result.text = getString(R.string.error)
-                    totalprice.text = " "
+                    blankerror(result, totalprice)
                 }
             }
         }
     }
 
+    private fun blankerror(result: TextView, totalprice: TextView) {
+        result.text = getString(R.string.error)
+        totalprice.text = " "
+    }
+
     @SuppressLint("SetTextI18n")
-    private fun calculatetotal(percentage: Double) {
+    private fun calculatetotal(percentage: Double, result: TextView, totalprice: TextView) {
         val df = DecimalFormat("###0.00")
         df.roundingMode = RoundingMode.FLOOR
 
