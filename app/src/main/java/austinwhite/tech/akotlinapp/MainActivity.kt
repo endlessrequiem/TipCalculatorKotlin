@@ -84,8 +84,7 @@ class MainActivity : AppCompatActivity() {
 
                     } else {
                         val usercustom = custominput.text.toString().toDouble() //custom percentage
-                        val userpercent = usercustom * 0.01
-                        val percentage = userpercent
+                        val percentage = usercustom * 0.01
 
                         calculatetotal(percentage)
 
