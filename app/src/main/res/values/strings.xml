@@ -1,14 +1,14 @@
 <resources>
     <string name="app_name">Tip Calculator</string>
-    <string name="tenpercent">10%</string>
-    <string name="fifteenpercent">15%</string>
-    <string name="twentypercent">20%</string>
-    <string name="custompercentage">Custom</string>
+    <string name="tenPercent">10%</string>
+    <string name="fifteenPercent">15%</string>
+    <string name="twentyPercent">20%</string>
+    <string name="customPercentage">Custom</string>
     <string name="calculate">Calculate</string>
     <string name="total">Tip Total</string>
-    <string name="userinput">Current Total</string>
-    <string name="youtip">You Tip: $</string>
-    <string name="yourprice">You Pay: $</string>
-    <string name="newprice">New Price</string>
+    <string name="userInput">Current Total</string>
+    <string name="youTip">You Tip: $</string>
+    <string name="yourPrice">You Pay: $</string>
+    <string name="newPrice">New Price</string>
     <string name="error">ERROR: Empty Input</string>
 </resources>

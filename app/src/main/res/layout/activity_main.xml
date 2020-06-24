@@ -26,14 +26,14 @@
         app:layout_constraintTop_toBottomOf="@+id/calculate" />
 
     <TextView
-        android:id="@+id/totalprice"
+        android:id="@+id/totalPrice"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="176dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="176dp"
         android:layout_marginBottom="57dp"
-        android:text="@string/newprice"
+        android:text="@string/newPrice"
         android:textAlignment="center"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -55,49 +55,49 @@
 
 
         <RadioButton
-            android:id="@+id/tenpercent"
+            android:id="@+id/tenPercent"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="0dp"
             android:layout_marginTop="0dp"
             android:layout_marginEnd="0dp"
             android:layout_marginBottom="0dp"
-            android:text="@string/tenpercent"
-            app:layout_constraintBottom_toTopOf="@+id/fifteenpercent"
+            android:text="@string/tenPercent"
+            app:layout_constraintBottom_toTopOf="@+id/fifteenPercent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <RadioButton
-            android:id="@+id/fifteenpercent"
+            android:id="@+id/fifteenPercent"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="0dp"
             android:layout_marginEnd="0dp"
             android:layout_marginBottom="0dp"
-            android:text="@string/fifteenpercent"
-            app:layout_constraintBottom_toTopOf="@+id/twentypercent"
+            android:text="@string/fifteenPercent"
+            app:layout_constraintBottom_toTopOf="@+id/twentyPercent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tenpercent" />
+            app:layout_constraintTop_toBottomOf="@+id/tenPercent" />
 
         <RadioButton
-            android:id="@+id/twentypercent"
+            android:id="@+id/twentyPercent"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="0dp"
             android:layout_marginEnd="0dp"
             android:layout_marginBottom="0dp"
-            android:text="@string/twentypercent"
-            app:layout_constraintBottom_toTopOf="@+id/custompercentage"
+            android:text="@string/twentyPercent"
+            app:layout_constraintBottom_toTopOf="@+id/customPercentage"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.513"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/fifteenpercent" />
+            app:layout_constraintTop_toBottomOf="@+id/fifteenPercent" />
 
 
         <EditText
-            android:id="@+id/custompercentage"
+            android:id="@+id/customPercentage"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
@@ -107,14 +107,15 @@
             android:layout_marginBottom="0dp"
             android:autofillHints=""
             android:ems="10"
-            android:hint="@string/custompercentage"
+            android:hint="@string/customPercentage"
             android:inputType="numberDecimal"
             android:singleLine="true"
             android:textAlignment="center"
-            android:textAllCaps="false" />
+            android:textAllCaps="false"
+            tools:ignore="RtlCompat" />
 
         <RadioButton
-            android:id="@+id/customcheckbox"
+            android:id="@+id/customRadioButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             tools:layout_marginEnd="0dp" />
@@ -136,14 +137,14 @@
         app:layout_constraintTop_toBottomOf="@+id/radioGroup" />
 
     <EditText
-        android:id="@+id/userinput"
+        android:id="@+id/userInput"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="95dp"
         android:layout_marginTop="32dp"
         android:layout_marginEnd="95dp"
         android:ems="10"
-        android:hint="@string/userinput"
+        android:hint="@string/userInput"
         android:importantForAutofill="no"
         android:inputType="numberDecimal"
         android:textAlignment="center"

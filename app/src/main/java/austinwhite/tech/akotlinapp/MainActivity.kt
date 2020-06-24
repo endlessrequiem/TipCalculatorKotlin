@@ -7,7 +7,6 @@ import android.widget.RadioButton
 import android.widget.EditText
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import kotlinx.android.synthetic.main.activity_main.*
 import java.math.RoundingMode
 import java.text.DecimalFormat
 
@@ -19,93 +18,94 @@ class MainActivity : AppCompatActivity() {
 
         val calculate: Button = findViewById(R.id.calculate)
         val result: TextView = findViewById(R.id.result) //tip total
-        val totalprice: TextView = findViewById(R.id.totalprice) //price with tip
-        val userinput: EditText = findViewById(R.id.userinput) //original price
-        val custominput: EditText = findViewById(R.id.custompercentage) //input from custom percentage
-        val custompercent: RadioButton = findViewById(R.id.customcheckbox) //toggles custom percentage on/off
-        val tenpercent: RadioButton = findViewById(R.id.tenpercent) //10%
-        val fifteenpercent: RadioButton = findViewById(R.id.fifteenpercent)//15%
-        val twentypercent: RadioButton = findViewById(R.id.twentypercent)//20%
+        val totalPrice: TextView = findViewById(R.id.totalPrice) //price with tip
+        val userInput: EditText = findViewById(R.id.userInput) //original price
+        val customInput: EditText = findViewById(R.id.customPercentage) //input from custom percentage
+        val customPercent: RadioButton = findViewById(R.id.customRadioButton) //toggles custom percentage on/off
+        val tenPercent: RadioButton = findViewById(R.id.tenPercent) //10%
+        val fifteenPercent: RadioButton = findViewById(R.id.fifteenPercent)//15%
+        val twentyPercent: RadioButton = findViewById(R.id.twentyPercent)//20%
 
         calculate.setOnClickListener {
             when {
-                tenpercent.isChecked -> {
-                    val checkPriceInput = userinput.text.toString() //checking value to get tip from
+                tenPercent.isChecked -> {
+                    val checkPriceInput = userInput.text.toString() //checking value to get tip from, will need to be checked every time
 
                     if (checkPriceInput.isBlank()) {
-                        blankerror(result, totalprice)
+                        blankError(result, totalPrice)
 
                     } else {
                         val percentage = 0.10
-                        calculatetotal(percentage, result, totalprice)
+                        calculateTotal(percentage, result, totalPrice, checkPriceInput)
                     }
                 }
-                fifteenpercent.isChecked -> {
-                    val checkPriceInput = userinput.text.toString() //checking value to get tip from
+                fifteenPercent.isChecked -> {
+                    val checkPriceInput = userInput.text.toString()
 
                     if (checkPriceInput.isBlank()) {
-                        blankerror(result, totalprice)
+                        blankError(result, totalPrice)
                     } else {
                         val percentage = 0.15
-                        calculatetotal(percentage, result, totalprice)
+                        calculateTotal(percentage, result, totalPrice, checkPriceInput)
                     }
                 }
-                twentypercent.isChecked -> {
-                    val checkPriceInput = userinput.text.toString() //checking value to get tip from
+                twentyPercent.isChecked -> {
+                    val checkPriceInput = userInput.text.toString()
 
                     if (checkPriceInput.isBlank()) {
-                        blankerror(result, totalprice)
+                        blankError(result, totalPrice)
+
                     } else {
                         val percentage = 0.20
-                        calculatetotal(percentage, result, totalprice)
+                        calculateTotal(percentage, result, totalPrice, checkPriceInput)
 
                     }
                 }
-                custompercent.isChecked -> {
-                    val checkPriceInput = userinput.text.toString() //checking value to get tip from
-                    val checkCustomPercentInput = custominput.text.toString() //checking custom percentage
+                customPercent.isChecked -> {
+                    val checkPriceInput = userInput.text.toString() //checking value to get tip from
+                    val checkCustomPercentInput = customInput.text.toString() //checking custom percentage
 
                     if (checkPriceInput.isBlank()) {
-                        blankerror(result, totalprice)
+                        blankError(result, totalPrice)
 
                     } else if (checkCustomPercentInput.isBlank()){
-                        blankerror(result, totalprice)
+                        blankError(result, totalPrice)
 
                     } else if (checkPriceInput.isBlank() && checkCustomPercentInput.isBlank()){
-                        blankerror(result, totalprice)
+                        blankError(result, totalPrice)
 
                     } else {
-                        val usercustom = custominput.text.toString().toDouble() //custom percentage
+                        val usercustom = checkCustomPercentInput.toDouble() //custom percentage
                         val percentage = usercustom * 0.01
 
-                        calculatetotal(percentage, result, totalprice)
+                        calculateTotal(percentage, result, totalPrice, checkPriceInput)
 
                     }
                 }
                 else -> {
-                    blankerror(result, totalprice)
+                    blankError(result, totalPrice)
                 }
             }
         }
     }
 
-    private fun blankerror(result: TextView, totalprice: TextView) {
+    private fun blankError(result: TextView, totalPrice: TextView) {
         result.text = getString(R.string.error)
-        totalprice.text = " "
+        totalPrice.text = " "
     }
 
     @SuppressLint("SetTextI18n")
-    private fun calculatetotal(percentage: Double, result: TextView, totalprice: TextView) {
+    private fun calculateTotal(percentage: Double, result: TextView, totalPrice: TextView, checkPriceInput: String) {
         val df = DecimalFormat("###0.00")
         df.roundingMode = RoundingMode.FLOOR
 
-        val input = userinput.text.toString().toDouble()
+        val input = checkPriceInput.toDouble()
         val tip = input * percentage
 
         val total = tip + input
 
-        result.text = getString(R.string.youtip) + df.format(tip)
-        totalprice.text = getString(R.string.yourprice) + df.format(total)
+        result.text = getString(R.string.youTip) + df.format(tip)
+        totalPrice.text = getString(R.string.yourPrice) + df.format(total)
 
     }
 }
