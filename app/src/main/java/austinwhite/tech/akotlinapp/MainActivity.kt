@@ -27,9 +27,6 @@ class MainActivity : AppCompatActivity() {
         val fifteenpercent: RadioButton = findViewById(R.id.fifteenpercent)//15%
         val twentypercent: RadioButton = findViewById(R.id.twentypercent)//20%
 
-        //val df = DecimalFormat("###0.00")
-        //df.roundingMode = RoundingMode.FLOOR
-
         calculate.setOnClickListener {
             when {
                 tenpercent.isChecked -> {
@@ -100,11 +97,11 @@ class MainActivity : AppCompatActivity() {
 
     @SuppressLint("SetTextI18n")
     private fun calculatetotal(percentage: Double) {
-        val input = userinput.text.toString().toDouble()
-        val tip = input * percentage
-
         val df = DecimalFormat("###0.00")
         df.roundingMode = RoundingMode.FLOOR
+
+        val input = userinput.text.toString().toDouble()
+        val tip = input * percentage
 
         val total = tip + input
 
