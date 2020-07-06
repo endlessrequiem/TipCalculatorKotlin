@@ -2,10 +2,7 @@ package austinwhite.tech.akotlinapp
 
 import android.annotation.SuppressLint
 import android.os.Bundle
-import android.widget.Button
-import android.widget.RadioButton
-import android.widget.EditText
-import android.widget.TextView
+import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import java.math.RoundingMode
 import java.text.DecimalFormat
@@ -32,7 +29,7 @@ class MainActivity : AppCompatActivity() {
                     val checkPriceInput = userInput.text.toString() //checking value to get tip from, will need to be checked every time
 
                     if (checkPriceInput.isBlank()) {
-                        blankError(result, totalPrice)
+                        blankError(result)
 
                     } else {
                         val percentage = 0.10
@@ -43,7 +40,7 @@ class MainActivity : AppCompatActivity() {
                     val checkPriceInput = userInput.text.toString()
 
                     if (checkPriceInput.isBlank()) {
-                        blankError(result, totalPrice)
+                        blankError(result)
                     } else {
                         val percentage = 0.15
                         calculateTotal(percentage, result, totalPrice, checkPriceInput)
@@ -53,7 +50,7 @@ class MainActivity : AppCompatActivity() {
                     val checkPriceInput = userInput.text.toString()
 
                     if (checkPriceInput.isBlank()) {
-                        blankError(result, totalPrice)
+                        blankError(result)
 
                     } else {
                         val percentage = 0.20
@@ -66,13 +63,13 @@ class MainActivity : AppCompatActivity() {
                     val checkCustomPercentInput = customInput.text.toString() //checking custom percentage
 
                     if (checkPriceInput.isBlank()) {
-                        blankError(result, totalPrice)
+                        blankError(result)
 
                     } else if (checkCustomPercentInput.isBlank()){
-                        blankError(result, totalPrice)
+                        blankError(result)
 
                     } else if (checkPriceInput.isBlank() && checkCustomPercentInput.isBlank()){
-                        blankError(result, totalPrice)
+                        blankError(result)
 
                     } else {
                         val usercustom = checkCustomPercentInput.toDouble() //custom percentage
@@ -83,14 +80,14 @@ class MainActivity : AppCompatActivity() {
                     }
                 }
                 else -> {
-                    blankError(result, totalPrice)
+                    blankError(result)
                 }
             }
         }
     }
 
-    private fun blankError(result: TextView, totalPrice: TextView) {
-        result.text = getString(R.string.error)
+    private fun blankError(totalPrice: TextView) {
+        Toast.makeText(this@MainActivity, getString(R.string.error), Toast.LENGTH_SHORT).show()
         totalPrice.text = " "
     }
 
